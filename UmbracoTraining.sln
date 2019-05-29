@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoTraining", "UmbracoTraining\UmbracoTraining.csproj", "{DFC3FC7B-3E40-4AC5-8A1E-7E1CD11ACC27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFC3FC7B-3E40-4AC5-8A1E-7E1CD11ACC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC3FC7B-3E40-4AC5-8A1E-7E1CD11ACC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC3FC7B-3E40-4AC5-8A1E-7E1CD11ACC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC3FC7B-3E40-4AC5-8A1E-7E1CD11ACC27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B6F3FC3-EA83-42A4-BD6F-3A2C9D8A1EE9}
+	EndGlobalSection
+EndGlobal
