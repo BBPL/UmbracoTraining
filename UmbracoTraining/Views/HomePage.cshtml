@@ -2,6 +2,7 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
 	Layout = "layout.cshtml";
+	var articles = Model.Root().FirstChild<NewsArea>().Children<NewsArticle>().OrderByDescending(x => x.CreateDate).Take(3);
 }
 
 <!-- default header on home page -->
@@ -67,45 +68,24 @@
 		<div class="articles">
 
 			<!-- Implement the Home Page news listing here -->
-
-			<a href="#" class="article article-with-image">
+            @foreach(var article in articles){
+                <a href="@article.Url" class="article article-with-image">
 				<div class="article-info">
 					<div class="article-meta">
-						<small class="article-date">1/1 2017</small>
-						<small class="article-cat">Umbraco,Tag,Content</small>
+						<small class="article-date">@article.CreateDate</small>
+						<small class="article-cat">@String.Join(",",article.Categories)</small>
 					</div>
 
-					<h3 class="article-title">Name</h3>
-					<div class="article-excerpt">Summary, Summary</div>
+					<h3 class="article-title">@article.Name</h3>
+					<div class="article-excerpt">@article.Summary</div>
 				</div>
 
 				<!--- optional  - if the article has a image assigned to it -->
 				<div class="article-image" style="background-image: url('')"></div>	
 			</a>
-
-			<a href="#" class="article article-with-image">
-				<div class="article-info">
-					<div class="article-meta">
-						<small class="article-date">1/1 2017</small>
-						<small class="article-cat">Umbraco,Tag,Content</small>
-					</div>
-
-					<h3 class="article-title">Name</h3>
-					<div class="article-excerpt">Summary, Summary</div>
-				</div>
-			</a>
+            }
 			
-			<a href="#" class="article article-with-image">
-				<div class="article-info">
-					<div class="article-meta">
-						<small class="article-date">1/1 2017</small>
-						<small class="article-cat">Umbraco,Tag,Content</small>
-					</div>
 
-					<h3 class="article-title">Name</h3>
-					<div class="article-excerpt">Summary, Summary</div>
-				</div>
-			</a>
 		
 		</div>
 

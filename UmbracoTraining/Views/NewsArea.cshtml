@@ -1,0 +1,68 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.NewsArea>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "layout.cshtml";
+	//var articles = Model.Children<NewsArticle>().OrderByDescending(x => x.CreateDate);
+	var tag = Request.QueryString["tag"];
+	var articles = (tag != null) ?
+	                Umbraco.TagQuery.GetContentByTag(tag).OfType<NewsArticle>()
+	                : Model.Children<NewsArticle>().OrderByDescending(x => x.CreateDate);
+	                
+	var tags = Umbraco.TagQuery.GetAllTags();
+}
+
+<!-- News area header -->
+<section class="section section--themed section--header section--content-center-bottom">
+    <div class="section__hero-content">
+        <!-- Insert the PageName field Here -->
+        <h1 class="no-air">Corporate news area</h1>
+    </div>
+</section>
+<!-- end of header -->
+
+<section class="section">
+    <div class="container">
+
+        <div class="col-md-9">
+            <h4>
+                <!-- Insert the Introduction field Here -->
+                This was supposed to be a nice introduction field. :) ..but you'll need to add it to the News Area document type, maybe like a textarea.
+            </h4>
+
+			<!-- Start of news article listing -->
+            <div class="articles">
+                @foreach(var article in articles){
+                    <!-- Start of news article -->
+                    <a href="@article.Url" class="article article-with-image">
+                        <div class="article-info">
+                            <div class="article-meta">
+                                <small class="article-date">@article.CreateDate</small>
+                                <small class="article-cat">@String.Join(",", article.Categories)</small>
+                            </div>
+                            <h3 class="article-title">@article.Name</h3>
+                            <div class="article-excerpt">@article.Summary</div>
+                        </div>
+    
+                        <!--- optional  - if the article has a image assigned to it -->
+                        <div class="article-image" style="background-image: url('#')"></div>
+                    </a>
+                    <!-- End of article -->
+                }
+                
+            </div>
+            <!-- End of news article listing -->
+            
+            
+            
+        </div>
+        <div class="col-md-3">
+                <h4>Categories:</h4>
+                <nav class="nav-bar nav-bar--list">
+                    @foreach(var t in tags){
+                        <a class="nav-link nav-link--black nav-link--air-bottom" href="?tag=@t.Text">@t.Text (@t.NodeCount)</a>
+                    }
+                </nav>
+            </div>
+
+    </div>
+</section>

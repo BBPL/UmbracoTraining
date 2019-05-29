@@ -1,0 +1,65 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.NewsArticle>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "layout.cshtml";
+}
+
+
+<section class="section section--themed section--header section--content-center-bottom">
+		<div class="section__hero-content">
+		     <!-- Insert the PageName field Here -->
+			<h1 class="no-air">Article Name</h1>
+		</div>
+</section>
+
+	
+	
+<section class="section">
+
+    <div class="container">
+
+        <div class="col-md-9">
+
+            <article>
+            
+            <h4>
+                <!-- Insert the Summary field Here -->
+                @Model.Summary
+            </h4>
+            
+            <h5>
+                <!-- Insert the Categories field Here -->
+                @String.Join(",", Model.Categories)
+            </h5>
+            
+            <!-- Insert the BodyText field here -->
+            @Model.BodyText
+            
+            
+            </article>
+        </div>
+        
+
+        
+        <div class="col-md-3">
+            
+            <!-- Go futher and implement the article navigation  here -->
+            <nav class="nav-bar nav-bar--list">
+                <a class="nav-link nav-link--black nav-link--air-bottom nav-link--active" 
+                            href="">News Article</a>
+                
+                <a class="nav-link nav-link--black nav-link--air-bottom" 
+                            href="">News Article</a>
+                
+                <a class="nav-link nav-link--black nav-link--air-bottom" 
+                            href="">News Article</a>
+                
+                <a class="nav-link nav-link--black nav-link--air-bottom" 
+                            href="">News Article</a>
+            </nav>
+
+        </div>
+
+
+    </div>
+</section>
