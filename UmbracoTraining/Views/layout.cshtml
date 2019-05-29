@@ -1,6 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
 @{
 	Layout = null;
+	
 }
 
 @* the fun starts here *@
@@ -40,10 +41,10 @@
 
             <!-- Our Top navigation -->
             <nav class="nav-bar top-nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link nav-link--active" href="/">Link</a>
-                <a class="nav-link" href="/">Link 2</a>
-                <a class="nav-link" href="/">Link 3</a> 
+                @foreach(var child in Model.Root().Children()){
+                <a class="nav-link @child.IsAncestorOrSelf(Model,"nav-link--active")" href="@child.Url">@child.Name</a>
+                }
+                
             </nav>
             <!-- End of top navigation -->
 

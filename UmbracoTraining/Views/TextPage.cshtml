@@ -28,15 +28,10 @@
         <!-- Beginning of secondary navigation -->
         <div class="col-md-3">
             <nav class="nav-bar nav-bar--list">
-
-                <a class="nav-link nav-link--black nav-link--air-bottom nav-link--active"
-                   href="#">Child page</a>
-
-                <a class="nav-link nav-link--black nav-link--air-bottom"
-                   href="#">Child page</a>
-
-                <a class="nav-link nav-link--black nav-link--air-bottom"
-                   href="#">Child page</a>
+                @foreach(var child in Model.AncestorOrSelf(2).Children()){
+                    <a class="nav-link nav-link--black nav-link--air-bottom  @child.IsAncestorOrSelf(Model, "nav-link--active")" href="@child.Url" > @child.Name</a>
+                }
+                
             </nav>
         </div>
         <!-- End of secondary navigation -->
