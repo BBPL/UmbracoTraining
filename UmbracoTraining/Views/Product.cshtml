@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Product>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "childPage.cshtml";
+	var testimonials = Model.Testimonials.OfType<Testimonial>();
+}
+
+<section class="section">
+    @Html.GetGridHtml(Model, "bodyText")
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            @foreach(var testimonial in testimonials){
+                <div class="col-sm-6 col-lg-4">
+                    <div class="testimonial">
+                         @if(testimonial.Image != null)
+                        {
+                            var cropUrl = Url.GetCropUrl(testimonial.Image, "Grid", false);
+                            <div class="testimonial-image" style="background-image: url('@cropUrl')"></div>
+                        }
+                        
+                        <div class="testimonial-content">
+                            <h3 class="testimonial-title">@testimonial.Title</h3>
+                            <p class="testimonial-text no-air">@testimonial.Quote</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
