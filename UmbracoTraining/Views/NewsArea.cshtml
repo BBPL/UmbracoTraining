@@ -44,7 +44,12 @@
                         </div>
     
                         <!--- optional  - if the article has a image assigned to it -->
-                        <div class="article-image" style="background-image: url('@article.Image.Url')"></div>
+                        @if(article.Image != null)
+                        {
+                            var cropUrl = Url.GetCropUrl(article.Image, "Grid", false);
+                            <div class="article-image" style="background-image: url('@cropUrl')"></div>
+                        }
+
                     </a>
                     <!-- End of article -->
                 }
