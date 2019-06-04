@@ -4,14 +4,20 @@
 }
 
 
+@if(Model is IHeader)
+{
+  @Html.Partial("header")
+} else {
+  <!-- Default header for text pages -->
+    <section class="section section--themed section--header section--content-center-bottom">
+        <div class="section__hero-content">
+            <!-- Replace with "PageName" value -->
+            <h1 class="no-air">@Model.Name</h1>
+        </div>
+    </section>
+    <!-- End of header section-->
+}
 
-<!-- Default header for text pages -->
-<section class="section section--themed section--header section--content-center-bottom">
-    <div class="section__hero-content">
-        <!-- Replace with "PageName" value -->
-        <h1 class="no-air">@Model.Name</h1>
-    </div>
-</section>
-<!-- End of header section-->
+
 
 @RenderBody()

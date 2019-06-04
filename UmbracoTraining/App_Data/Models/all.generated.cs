@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d8427388c22a9179")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "4e3beb722d6de3cc")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -122,7 +122,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>News Article</summary>
 	[PublishedModel("newsArticle")]
-	public partial class NewsArticle : PublishedContentModel
+	public partial class NewsArticle : PublishedContentModel, IHeader
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -172,6 +172,20 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
 		[ImplementPropertyType("summary")]
 		public string Summary => this.Value<string>("summary");
+
+		///<summary>
+		/// Header Images
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		[ImplementPropertyType("headerImages")]
+		public IEnumerable<IPublishedContent> HeaderImages => Header.GetHeaderImages(this);
+
+		///<summary>
+		/// Header Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		[ImplementPropertyType("headerTitle")]
+		public string HeaderTitle => Header.GetHeaderTitle(this);
 	}
 
 	/// <summary>News Area</summary>
@@ -198,6 +212,67 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+	}
+
+	// Mixin Content Type with alias "header"
+	/// <summary>Header</summary>
+	public partial interface IHeader : IPublishedContent
+	{
+		/// <summary>Header Images</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		IEnumerable<IPublishedContent> HeaderImages { get; }
+
+		/// <summary>Header Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		string HeaderTitle { get; }
+	}
+
+	/// <summary>Header</summary>
+	[PublishedModel("header")]
+	public partial class Header : PublishedContentModel, IHeader
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		public new const string ModelTypeAlias = "header";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		public new static PublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Header, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public Header(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Header Images
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		[ImplementPropertyType("headerImages")]
+		public IEnumerable<IPublishedContent> HeaderImages => GetHeaderImages(this);
+
+		/// <summary>Static getter for Header Images</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		public static IEnumerable<IPublishedContent> GetHeaderImages(IHeader that) => that.Value<IEnumerable<IPublishedContent>>("headerImages");
+
+		///<summary>
+		/// Header Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		[ImplementPropertyType("headerTitle")]
+		public string HeaderTitle => GetHeaderTitle(this);
+
+		/// <summary>Static getter for Header Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		public static string GetHeaderTitle(IHeader that) => that.Value<string>("headerTitle");
 	}
 
 	/// <summary>Folder</summary>
