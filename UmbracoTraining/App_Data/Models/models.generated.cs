@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "7bdb6caaea555d88")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d8427388c22a9179")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 namespace Umbraco.Web.PublishedModels
@@ -142,6 +142,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
 		[ImplementPropertyType("categories")]
 		public IEnumerable<string> Categories => this.Value<IEnumerable<string>>("categories");
+
+		///<summary>
+		/// Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.0.4")]
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image => this.Value<IPublishedContent>("image");
 
 		///<summary>
 		/// Summary
