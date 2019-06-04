@@ -1,7 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.NewsArea>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
-	Layout = "layout.cshtml";
+	Layout = "childPage.cshtml";
 	//var articles = Model.Children<NewsArticle>().OrderByDescending(x => x.CreateDate);
 	var tag = Request.QueryString["tag"];
 	var articles = (tag != null) ?
@@ -11,14 +11,6 @@
 	var tags = Umbraco.TagQuery.GetAllTags();
 }
 
-<!-- News area header -->
-<section class="section section--themed section--header section--content-center-bottom">
-    <div class="section__hero-content">
-        <!-- Insert the PageName field Here -->
-        <h1 class="no-air">Corporate news area</h1>
-    </div>
-</section>
-<!-- end of header -->
 
 <section class="section">
     <div class="container">

@@ -1,17 +1,9 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.TextPage>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
-	Layout = "layout.cshtml";
+	Layout = "childPage.cshtml";
 }
 
-<!-- Default header for text pages -->
-<section class="section section--themed section--header section--content-center-bottom">
-    <div class="section__hero-content">
-        <!-- Replace with "PageName" value -->
-        <h1 class="no-air">@Model.Name</h1>
-    </div>
-</section>
-<!-- End of header section-->
 
 <section class="section">
     <div class="container">
